@@ -1,0 +1,14 @@
+package com.verizon.learning.model;
+
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.stereotype.Repository;
+
+import reactor.core.publisher.Flux;
+
+@Repository
+public interface CustomerAddressRepository  extends ReactiveMongoRepository<CustomerAddress, String>  {
+	
+	Flux<CustomerAddress> findBycustomerId(String customerId);
+	
+	Flux<CustomerAddress> findByCustomerIdAndType(String customerId, String type);
+}
